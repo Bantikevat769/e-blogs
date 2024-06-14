@@ -1,0 +1,170 @@
+{% load static %}
+{% include "Header.html" %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>website page</title>
+        <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+        {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'css/style3.css' %}"> {% endcomment %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style3.css' %}">
+        <link href="/bootstrap-5.3.2-dist/bootstrap-5.3.2-dist/css/bootstrap.min.css">
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-/a6XbtLX5Axjw1mLbwAlEwQweodlqFz7CQvQdKQepgT3fqk6d2DNzGjSyFb5/xVHz8FeoFZ0yBbKgUf3/eD+kg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Your custom CSS or other stylesheets -->
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap"
+            rel="stylesheet">
+            
+        <link rel="stylesheet"
+
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    </head>
+    <body>
+        <script type="text/javascript">
+            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+            (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/664082239a809f19fb2fff23/1htlvon63';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+            })();
+            </script>
+        
+<br>
+<br>
+<br>
+<section id="social-media" class="social">
+    <style>
+        .social-icon {
+            width: 32px; /* Adjust the width as needed */
+            height: 32px; /* Adjust the height as needed */
+        }
+        .social-icon:hover {
+            cursor: pointer;
+            transform: scale(1.2);
+            transition: all 0.2s ease-in-out;
+            color: rgb(255, 255, 255);
+            background-color: rgb(255, 255, 255);
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px rgb(255, 255, 255);
+            border: 1px solid rgb(255, 255, 255);
+
+        }
+        .social{
+            margin-top:15px;
+            margin-right:10px;
+            background-color:gray;
+            color: #ffffff; 
+        
+        
+            padding: 10px;
+        }
+    </style>
+    <div class="container">
+        <div class="row justify-content-end">
+            <div class="col-auto">
+                <div class="social-icons">
+                    <!-- Facebook -->
+                    <a href="#" target="_blank"><img src="https://img.icons8.com/color/48/000000/facebook-new.png" alt="Facebook" class="social-icon"></a>
+
+                    <!-- Twitter -->
+                    <a href="#" target="_blank"><img src="https://img.icons8.com/color/48/000000/twitter--v1.png" alt="Twitter" class="social-icon"></a>
+
+                    <!-- Google -->
+                    <a href="#" target="_blank"><img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google" class="social-icon"></a>
+
+                    <!-- Instagram -->
+                    <a href="#" target="_blank"><img src="https://img.icons8.com/color/48/000000/instagram-new.png" alt="Instagram" class="social-icon"></a>
+
+                    <!-- LinkedIn -->
+                    <a href="#" target="_blank"><img src="https://img.icons8.com/color/48/000000/linkedin.png" alt="LinkedIn" class="social-icon"></a>
+
+                    <!-- Youtube -->
+                    <a href="#" target="_blank"><img src="https://img.icons8.com/color/48/000000/youtube--v1.png" alt="Youtube" class="social-icon"></a>
+
+                    <!-- Github -->
+                    <a href="#" target="_blank"><img src="https://img.icons8.com/ios-filled/50/000000/github.png" alt="Github" class="social-icon"></a>
+
+                    <!-- Whatsapp -->
+                    <a href="#" target="_blank"><img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="Whatsapp" class="social-icon"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+<br>
+<br>
+<!-- blog_post.html -->
+<section id="search-results" class="container">
+    <h1>Search Result:</h1>
+
+    {% if allpost|length < 1 %}
+        <p>No Search Results</p>
+        <p>Your search results for: <b>{{ search_query }}</b> - did not match any documents.</p>
+        <p>Suggestions:</p>
+        <ol>
+            <li>Try searching for a different keyword.</li>
+            <li>Try searching with fewer words.</li>
+            <li>Try searching with a different spelling.</li>
+            <li>Try searching with a different keyword.</li>
+        </ol>
+    {% endif %}
+
+    {% for blog in allpost %}
+        <div class="card mb-3 bg-light">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{{ blog.image.url }}" class="img-fluid rounded-start" alt="{{ blog.post_title }}">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ blog.post_title }}</h5>
+                        <p class="card-text">{{ blog.details|truncatewords:30 }}</p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <i class="bi bi-person"></i> {{ blog.author }} &nbsp;&nbsp;
+                                <i class="bi bi-calendar"></i> {{ blog.publish_date|date:"F d, Y" }}
+                            </small>
+                        </p>
+                        <a href="{% url 'singlepost' post_id=blog.id %}" class="btn btn-primary">Read More</a>
+
+                        {% comment %} <a href="singlepost" class="btn btn-default">Read More</a> {% endcomment %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</section>
+
+
+
+           {% include "Footer.html" %}
+            <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+            <script>
+                AOS.init();
+              </script>
+            <script
+                src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+                integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+                crossorigin="anonymous"></script>
+            <script
+                src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+                integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+                crossorigin="anonymous"></script>
+        </body>
+    </html>

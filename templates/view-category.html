@@ -1,0 +1,91 @@
+{% include 'include/header.html'%}
+{% block content %}
+<div class="content-wrapper">
+   <div class="content-header">
+      <div class="container-fluid">
+         <div class="row mb-2">
+            <div class="col-sm-6">
+               <h1 class="m-0">Category Table</h1>
+            </div>
+            <div class="col-sm-6">
+               <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item active">View Category</li>
+               </ol>
+            </div>
+         </div>
+      </div>
+   </div>
+   <section class="content">
+      <div class="container-fluid">
+         <div class="row">
+            <div class="col-md-12">
+
+               <div class="card card-primary">
+               <div class="card-header">
+                  <div class="row">
+                     <div class="col-md-10">
+                        <h3 class="card-title">View Category</h3>
+                     </div>
+                     <div class="col-md-2">
+                        <a href="/add-category" class="btn btn-danger">Add Category</a>
+                     </div>
+                  </div>
+               </div>
+               <div class="card-body">
+               <!-- Category Table -->
+               <table id="categoryTable" class="table table-bordered table-striped">
+               <thead>
+               <tr>
+               <th>Product Id</th>
+               <th>Category Name</th>
+               <th>Images</th>
+               <th>Action</th>
+              
+               </tr>
+               </thead>
+               <tbody>
+                  {% for categoryview in categoryviews %}
+                  <tr>
+                      <td>{{ categoryview.id }}</td>
+                      <td>{{ categoryview.category_name }}</td>
+                      {% if categoryview.image %}
+                          <td><img src="{{ categoryview.image.url }}" alt="Category Image" width="100"></td>
+                      {% else %}
+                          <td>No Image Available</td>
+                      {% endif %}
+                      <td>
+                          <a href="/editcat/{{ categoryview.id }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                          <a href="/deletecat/{{ categoryview.id }}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                      </td>
+                  </tr>
+                  {% endfor %}
+                  
+               </tbody>
+               </table>
+               <!-- Category table -->
+            </div>
+            </div>
+         </div>
+      </div>
+   </section>
+</div>
+{% include 'include/footer.html' %}
+<script>
+  $(function () {
+    $("#categoryTable").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+{% endblock %}

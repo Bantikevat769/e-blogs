@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Ebook</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            color: #333;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .form-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .form-container button[type="submit"] {
+            background-color: #4e54c8;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-container button[type="submit"]:hover {
+            background-color: #8f94fb;
+        }
+
+        .error-message {
+            color: red;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .download-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .download-link a {
+            background-color: #4e54c8;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-link a:hover {
+            background-color: #8f94fb;
+        }
+        h2{
+            text-align: center;
+            margin-top: 50px;
+            color: #333;
+            font-size: 30px;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+            margin-bottom: 50px;
+            font-style: italic;
+            font-variant: small-caps;
+            font-variant-caps: small-caps;
+            font-variant-ligatures: common-ligatures;
+            font-variant-numeric: tabular-nums;
+            font-variant-position: normal;
+            font-variant-alternates: normal;
+            font-variant-east-asian: normal;
+        
+        }
+    </style>
+</head>
+<body>
+    <h2> Password is "love" </h2>
+    <h1>Buy {{ ebook.title }}</h1>
+    <div class="form-container">
+        {% if not password_correct %}
+            <form method="post">
+                {% csrf_token %}
+                <label for="password">Enter Password:</label>
+                <input type="password" name="password" id="password">
+                <button type="submit">Submit</button>
+            </form>
+            {% if messages %}
+                <div class="error-message">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% else %}
+            <div class="download-link">
+                <a href="{{ ebook.file.url }}" download>Download Ebook</a>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

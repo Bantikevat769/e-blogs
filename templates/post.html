@@ -1,0 +1,189 @@
+{% include 'include/header.html'%}
+{% block content %}
+<div class="content-wrapper">
+   <div class="content-header">
+      <div class="container-fluid">
+         <div class="row mb-2">
+            <div class="col-sm-6">
+               <h1 class="m-0">Post form</h1>
+            </div>
+            <div class="col-sm-6">
+               <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item active">Post</li>
+               </ol>
+            </div>
+         </div>
+      </div>
+   </div>
+   <section class="content">
+      <div class="container-fluid">
+         <div class="row">
+            {% for message in messages %}
+            <div class="alert alert-primary alert-dismissible fade show text-center" role="alert">
+               <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="me-2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+               <strong>Welcome!</strong> {{ message }}
+               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close"></button>
+            </div>
+            {% endfor %}
+            <div class="col-md-12">
+               <div class="card card-primary">
+                  <div class="card-header">
+                     <div class="row">
+                        <div class="col-md-10">
+                           <h3 class="card-title">Add Post</h3>
+                        </div>
+                        <div class="col-md-2">
+                           <a href="/view-blog" class="btn btn-danger">View Post</a>
+                        </div>
+                     </div>
+                  </div>
+                  <form action="/storeblog" method="post" enctype="multipart/form-data">
+                     {% csrf_token %}
+                     {{ form.media }}
+                     {{ form.as_p }}   
+                     <div class="card-body">
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label for="post_name">Post Name</label>
+                                 <input type="text" class="form-control" name="post_name" placeholder="Enter Post" >
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label for="post_title">Post Title</label>
+                                 <input type="text" class="form-control" name="post_title" placeholder="Enter Post title">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label for="category_id">Category</label>
+                                 <select class="form-control" name="category_id">
+                                    <option disabled selected>Select Category</option>
+                                    {% for categoryview in categoryviews %}
+                                    <option value="{{categoryview.id}}">{{categoryview.category_name}}</option>
+                                    {% endfor %}
+                                 </select>
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label for="subcategory_id">Subcategory</label>
+                                 <select class="form-control" name="subcategory_id">
+                                    <option disabled selected>Select Category</option>
+                                    {% for subcategoryview in subcategoryviews %}
+                                    <option value="{{subcategoryview.id}}">{{subcategoryview.subcategory_name}}</option>
+                                    {% endfor %}
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 {{ form.details.label_tag }}
+                                 {{ form.details }}
+                                 <textarea name="details">
+                                    </textarea>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 
+                                 <label for="exampleInputFile">Upload Image</label>
+                                 <div class="input-group">
+                                    <div class="custom-file">
+                                       <input type="file" class="custom-file-input" name="image" id="exampleInputFile" accept="image/*">
+                                       <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                    </div>
+                                    <div class="input-group-append">
+                                       <span class="input-group-text">Upload</span>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label for="exampleInputFile">Upload Audio File</label>
+                                 <div class="input-group">
+                                    <div class="custom-file">
+                                       <input type="file" class="custom-file-input" name="audio" accept="audio/*">
+                                       <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                    </div>
+                                    <div class="input-group-append">
+                                       <span class="input-group-text">Upload</span>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                           <div class="form-group">
+                               <label for="section">Section</label>
+                               <select class="form-control" name="section">
+                                   <option value="Popular">Popular</option>
+                                   <option value="Recent">Recent</option>
+                                   <option value="Editor_Pick">Editor Pick</option>
+                                   <option value="Trending">Trending</option>
+                                   <option value="Inspiration">Inspiration</option>
+                                   <option value="Latest_Posts">Latest Posts</option>
+                                   
+                               </select>
+                           </div>
+                       </div>
+                       <div class="col-md-4">
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="main_post_checkbox" name="main_post">
+                            <label class="form-check-label" for="main_post_checkbox">Main Post</label>
+                        </div>
+                    </div>
+                       
+                       <div class="col-md-4">
+                           <div class="form-group">
+                               <label for="slug">Slug</label>
+                               <input type="text" class="form-control" name="slug" placeholder="Enter slug">
+                           </div>
+                       </div>
+                       
+                       <div class="col-md-4">
+                           <div class="form-group">
+                               <label for="status">Status</label>
+                               <select class="form-control" name="status">
+                                   <option value="0">Draft</option>
+                                   <option value="1">Publish</option>
+                               </select>
+                           </div>
+                       </div>
+                       <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="publish_date">Publish Date</label>
+                            <input type="date" class="form-control" name="publish_date">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                     <label for="author">Author</label>
+                     <input type="text" class="form-control" id="author" name="author" placeholder="Enter author's name" value="Anonymous">
+                 </div>
+                        <div class="card-footer">
+                           <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                  </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+</div>
+<script src="https://cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script>
+<script>
+   CKEDITOR.replace('details');
+</script>
+{% include 'include/footer.html' %}
+{% endblock %}

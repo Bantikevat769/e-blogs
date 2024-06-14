@@ -1,0 +1,79 @@
+
+/* CSS for text-container */
+.card {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 10px; /* Adjust border radius as needed */
+    padding: 10px; /* Adjust padding as needed */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+  
+
+}
+
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+    background-color: #fff;
+
+
+}
+
+/* CSS for text-container */
+.text-container {
+    display: flex;
+    align-items: center; /* Center align content vertically */
+    justify-content: space-between; /* Space between items */
+    padding: 10px; /* Adjust padding as needed */
+    overflow: hidden; /* Stop content from scrolling */
+}
+/* CSS for image-container */
+.image-containers {
+    width: 100px; /* Adjust width as needed */
+    height: 100px; /* Adjust height as needed */
+    border: 1px solid #ccc;
+    border-radius: 50%; /* Applies circular border radius */
+    overflow: hidden; /* Ensure image doesn't overflow container */
+   
+    
+
+}
+
+.img1 {
+    width: 100%;
+    height: 100%;
+    display: block; /* Ensure proper image alignment */
+    object-fit: cover;
+    border-radius: 10px;
+
+}
+
+/* CSS for text-content */
+.text-content {
+    flex: 1; /* Grow to fill remaining space */
+    text-align: center; /* Align text to the right */
+    font-size: 16px;
+    
+}
+
+.text-content h2 {
+    margin: 0; /* Remove default margin */
+    text-decoration: none !important; /* Remove text decoration */
+    color: inherit; /* Inherit color from parent */
+}
+
+.text-content h2:hover {
+    color: #007bff; /* Change color on hover */
+}
+.text-content a {
+    text-decoration: none;
+    color: inherit; /* Inherit color from parent */
+}
+
+.card-title {
+    text-align:left; /* Center align the text */
+    margin-bottom: 20px; /* Add margin at the bottom */
+    font-size: 55px;
+    
+}

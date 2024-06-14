@@ -1,0 +1,94 @@
+<!-- templates/blog/blog_page.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Page</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Add your custom CSS file if needed -->
+    <style>
+        /* Custom styles */
+        /* Paste the provided CSS styles here */
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <!-- Latest Posts Section -->
+        <div class="row mb-4">
+            <div class="col">
+                <h2>Latest Posts</h2>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Iterate over latest posts -->
+            {% for post in latest_posts %}
+            <div class="col-md-4 animate__animated animate__fadeInLeft animate__delay-2s">
+                <div class="all-post-card">
+                    <h5>{{ post.post_title }}</h5>
+                    <p>{{ post.details }}</p>
+                    <!-- Add more fields to display if needed -->
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Popular Posts Section -->
+        <div class="row mb-4">
+            <div class="col">
+                <h2>Popular Posts</h2>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Iterate over popular posts -->
+            {% for post in popular_post %}
+            <div class="col-md-4 animate__animated animate__fadeInLeft animate__delay-2s">
+                <div class="all-post-card">
+                    <h5>{{ post.publish_date|date:"M. d, Y"  }}</h5>
+                    <p>{{ post.details }}</p>
+                    <!-- Add more fields to display if needed -->
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Other Categories and Posts -->
+        <!-- Iterate over categories and subcategories -->
+        {% for category, subcategories in categorized_posts.items %}
+        <div class="row mb-4 animate__animated animate__fadeInUp">
+            <div class="col">
+                <h2>{{ category.category_name }}</h2>
+            </div>
+        </div>
+        <!-- Iterate over subcategories -->
+        {% for subcategory, posts in subcategories.items %}
+        <div class="row mb-4 animate__animated animate__fadeInUp animate__delay-1s">
+            <div class="col">
+                <div class="category-section-card">
+                    <h3>{{ subcategory.subcategory_name }}</h3>
+                    <!-- Iterate over posts in the current subcategory -->
+                    {% for post in posts %}
+                    <div class="all-post-card">
+                        <h5>{{ post.post_title }}</h5>
+                        <p>{{ post.details }}</p>
+                        <!-- Add more fields to display if needed -->
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% endfor %}
+    </div>
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Add your custom JavaScript file if needed -->
+    <script>
+        // Add your custom JavaScript code here
+    </script>
+</body>
+</html>

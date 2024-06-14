@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #4e54c8, #8f94fb);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-form {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .login-form h2 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .login-form .form-group {
+            position: relative;
+        }
+
+        .login-form .form-group label {
+            color: #333;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .login-form .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        .login-form .form-control:focus {
+            outline: none;
+            border-color: #4e54c8;
+            box-shadow: 0px 0px 10px rgba(78, 84, 200, 0.3);
+        }
+
+        .login-form .btn-dark {
+            background-color: #4e54c8;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .login-form .btn-dark:hover {
+            background-color: #8f94fb;
+        }
+
+        .login-form .btn-default {
+            background-color: transparent;
+            color: #4e54c8;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .login-form .btn-default:hover {
+            background-color: #8f94fb;
+            color: #fff;
+        }
+
+        .login-form .text-danger {
+            color: #ff6347;
+            font-size: 0.8em;
+        }
+
+        .login-form .fas {
+            position: absolute;
+            right: 15px;
+            top: calc(50% - 8px);
+            color: #ccc;
+            transition: color 0.3s ease;
+        }
+
+        .login-form .form-control:focus + .fas {
+            color: #4e54c8;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-form">
+        <h2>Login</h2>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-danger">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="POST" action="{% url 'student_login' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username" class="form-control">
+                <span class="text-danger">{{ form.username.errors }}</span>
+                <i class="fas fa-user"></i>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" class="form-control">
+                <span class="text-danger">{{ form.password.errors }}</span>
+                <i class="fas fa-lock"></i>
+            </div>
+
+            <button type="submit" class="btn btn-dark">Login</button>
+
+            <a href="{% url 'student_signup' %}" class="btn btn-default">Create a new account</a>
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+</body>
+</html>

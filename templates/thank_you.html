@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1s ease-in-out;
+        }
+        h2 {
+            color: #333;
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        p {
+            color: #666;
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+        .bubble {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.6);
+            animation: bubbleAnimation 5s linear infinite alternate;
+        }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes bubbleAnimation {
+            0% {
+                transform: translateY(0) scale(1);
+            }
+            100% {
+                transform: translateY(-100vh) scale(2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Thank You for Subscribing!</h2>
+        <p>You will receive updates on our latest posts.</p>
+    </div>
+    <div class="bubble" style="left: 10%; bottom: -50px;"></div>
+    <div class="bubble" style="left: 30%; bottom: -100px;"></div>
+    <div class="bubble" style="left: 50%; bottom: -80px;"></div>
+    <div class="bubble" style="left: 70%; bottom: -120px;"></div>
+    <div class="bubble" style="left: 90%; bottom: -70px;"></div>
+</body>
+</html>

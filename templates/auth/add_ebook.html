@@ -1,0 +1,44 @@
+{% include 'include/header.html' %} {% block content %}
+<div class="content-wrapper">
+   <div class="content-header">
+      <div class="container-fluid">
+         <div class="row mb-2">
+            <div class="col-sm-6">
+               <h1 class="m-0">Add Ebook</h1>
+               <a href="/view_ebook" class="btn btn-danger">view Book</a>
+               
+            </div>
+            <div class="col-sm-6">
+               <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                  <li class="breadcrumb-item active">Add Ebook</li>
+               </ol>
+            </div>
+         </div>
+      </div>
+   </div>
+   <section class="content">
+      <div class="container-fluid">
+         <div class="row">
+            <div class="col-md-12">
+               <div class="card card-primary">
+                  <div class="card-header">
+                     <h3 class="card-title">Add Ebook</h3>
+                  </div>
+                  <div class="card-body">
+                     <form method="POST" enctype="multipart/form-data" class="ebook-form"> {% csrf_token %} {{ form.as_p }} <button type="submit" class="btn btn-primary">Add Ebook</button> </form>
+                     <div class="success-message" style="display:none;">
+                        <div class="alert alert-success">Ebook added successfully!</div>
+                     </div>
+                     {% comment %} {% if ebook %} <a href="{% url 'view_ebook'  %}" class="btn btn-success mt-3">View Book</a> {% endif %}  {% endcomment %}
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+</div>
+<style> .card-body { padding: 2rem; } .ebook-form label { font-weight: bold; display: block; margin-bottom: 0.5rem; } .ebook-form input[type="text"], .ebook-form input[type="file"] { width: 100%; padding: 0.5rem; margin-bottom: 1rem; border-radius: 0.25rem; border: 1px solid #ccc; } .ebook-form textarea { width: 100%; padding: 0.5rem; margin-bottom: 1rem; border-radius: 0.25rem; border: 1px solid #ccc; } .btn-primary { background-color: #007bff; border-color: #007bff; } .btn-primary:hover { background-color: #0069d9; border-color: #0062cc; } .btn-success { background-color: #28a745; border-color: #28a745; } .btn-success:hover { background-color: #1e7e34; border-color: #1c7430; } </style>
+<script> document.addEventListener("DOMContentLoaded", function () { var form = document.querySelector(".ebook-form"); var successMessage = document.querySelector(".success-message"); form.addEventListener("submit", function (event) { event.preventDefault(); // Disable the submit button var submitButton = form.querySelector("button[type='submit']"); submitButton.disabled = true; submitButton.textContent = "Adding Ebook..."; // Send the form data to the server var formData = new FormData(form); var xhr = new XMLHttpRequest(); xhr.open("POST", form.action, true); xhr.onload = function () { if (xhr.status === 200) { // If the request was successful, show the success message successMessage.style.display = "block"; // Hide the success message after 3 seconds setTimeout(function () { successMessage.style.display = "none"; }, 3000); } else { // If the request failed, re-enable the submit button submitButton.disabled = false; submitButton.textContent = "Add Ebook"; } }; xhr.send(formData); }); }); </script>
+{% endblock %}
+{% include 'include/footer.html' %}

@@ -1,0 +1,605 @@
+{% load static %}
+{% include "Header.html" %}
+{% comment %} {% include "loder.html" %} {% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>website page</title>
+        <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+            <href="/bootstrap-5.3.2-dist/bootstrap-5.3.2-dist/css/bootstrap.min.css">
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript">
+            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+            (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/664082239a809f19fb2fff23/1htlvon63';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+            })();
+            </script>
+
+<section class="carousel">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'front/images/yes.jpg' %}" class="d-block w-100" alt="..." style="object-fit: cover;">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>First slide label</h5>
+                    <p>Some representative placeholder content for the first slide.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'front/images/yes (2).jpg' %}" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Second slide label</h5>
+                    <p>Some representative placeholder content for the second slide.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'front/images/yes (4).jpg' %}" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Third slide label</h5>
+                    <p>Some representative placeholder content for the third slide.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'front/images/yes (5).jpg' %}" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Fourth slide label</h5>
+                    <p>Some representative placeholder content for the fourth slide.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</section>
+
+{% comment %}               
+<section id="social-media" class="social py-5" style="background-color: #f8f9fa;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <div class="social-icons d-flex justify-content-center">
+                    <a href="#" target="_blank" class="social-icon mx-3"><i class="bi bi-facebook" style="color: #3b5998;"></i></a>
+                    <a href="#" target="_blank" class="social-icon mx-3"><i class="bi bi-twitter" style="color: #1DA1F2;"></i></a>
+                    <a href="#" target="_blank" class="social-icon mx-3"><i class="bi bi-instagram" style="color: #C13584;"></i></a>
+                    <a href="#" target="_blank" class="social-icon mx-3"><i class="bi bi-linkedin" style="color: #0e76a8;"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+    
+        .social-icon {
+            font-size: 2.5rem;
+            margin: 0 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+    
+        .social-icon:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    
+</section> {% endcomment %}
+
+<section id="social-media">
+    <h2>Follow Us</h2>
+    <div class="social-media-icons">
+        <a href="https://www.facebook.com" target="_blank" class="icon facebook">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.twitter.com" target="_blank" class="icon twitter">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://www.instagram.com" target="_blank" class="icon instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.linkedin.com" target="_blank" class="icon linkedin">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+    </div>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        
+        #social-media {
+            text-align: center;
+            padding: 50px 0;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        #social-media h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        
+        .social-media-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .icon {
+            text-decoration: none;
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+        
+        .facebook { background-color: #3b5998; }
+        .twitter { background-color: #55acee; }
+        .instagram { background-color: #e4405f; }
+        .linkedin { background-color: #0077b5; }
+        
+        .icon:hover {
+            opacity: 0.7;
+        }
+        
+    </style>
+</section>
+
+
+
+  
+              
+              
+
+<section class="main_post py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mb-4">
+                {% if main_post %}
+                <div class="card mb-4">
+                    <img src="{{ main_post.image.url }}" class="card-img-top" alt="Featured Image">
+                    <div class="card-body">
+                        <a href="#" class="badge badge-primary">Inspiration</a>
+                        <h2 class="card-title mt-2">{{ main_post.post_title }}</h2>
+                        <ul class="list-inline meta">
+                            <li class="list-inline-item"><a href="#">TechIt</a></li>
+                            <li class="list-inline-item">{{ main_post.publish_date }}</li>
+                        </ul>
+                        <p class="card-text">{{ main_post.content }}</p>
+                        <a href="#" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-lg-4">
+                <div class="sidebar-widget">
+                    <h4 class="widget-title">Recent Posts</h4>
+                    <ul class="list-unstyled">
+                        {% for post in recent_post %}
+                        <li class="media mb-3">
+                            <img src="{{ post.image.url }}" class="mr-3" alt="Post Image" style="width: 64px; height: 64px; object-fit: cover;">
+                            <div class="media-body">
+                                <h6 class="mt-0 mb-1"><a href="{% url 'singlepost' post.id %}">{{ post.post_title }}</a></h6>
+                                <small>{{ post.publish_date }}</small>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="sidebar-widget mt-4">
+                    <h4 class="widget-title">Popular Posts</h4>
+                    <ul class="list-unstyled">
+                        {% for post in popular_post %}
+                        <li class="media mb-3">
+                            <img src="{{ post.image.url }}" class="mr-3" alt="Post Image" style="width: 64px; height: 64px; object-fit: cover;">
+                            <div class="media-body">
+                                <h6 class="mt-0 mb-1"><a href="/blogview/{{ post.id }}">{{ post.post_title }}</a>{{ post.post_title }}</a></h6>
+                                <small>{{ post.publish_date }}</small>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .sidebar-widget {
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+    
+        .widget-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #343a40;
+            margin-bottom: 20px;
+        }
+    
+        .media-body h6 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #007bff;
+            margin-bottom: 5px;
+        }
+    
+        .media-body h6 a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+    
+        .media-body h6 a:hover {
+            color: #0056b3;
+        }
+    
+        .media small {
+            color: #6c757d;
+        }
+    </style>
+    
+</section>
+
+
+
+
+
+
+
+
+
+<section class="Team py-5 text-center" id="team">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="section-title">Our Blogs</h2>
+                <div class="row">
+                    {% for team_member in blogview %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="{{ team_member.image.url }}" class="card-img-top" alt="Team Member">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ team_member.post_title }}</h5>
+                                <p class="card-text">{{ team_member.details|striptags|truncatechars:100 }}</p>
+                                <a href="{% url 'singlepost' team_member.id %}" class="btn btn-primary">Read More</a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pagination" data-aos="fade-up">
+        <ul class="pagination justify-content-center">
+            {% if blogview.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page=1" data-aos="zoom-in" data-aos-delay="200">&laquo; First</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ blogview.previous_page_number }}" data-aos="zoom-in" data-aos-delay="300">Previous</a>
+            </li>
+            {% endif %}
+    
+            <li class="page-item disabled">
+                <span class="page-link">
+                    Page {{ blogview.number }} of {{ blogview.paginator.num_pages }}.
+                </span>
+            </li>
+    
+            {% if blogview.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ blogview.next_page_number }}" data-aos="zoom-in" data-aos-delay="400">Next</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ blogview.paginator.num_pages }}" data-aos="zoom-in" data-aos-delay="500">Last &raquo;</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+    
+</section>
+
+<style>
+    /* Team/Blog Section CSS */
+    #team .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        color: #333;
+        margin-top: 2rem;
+        font-weight: 700;
+
+    }
+
+    #team .card {
+        border: none;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+        border-radius: 10px;
+
+    }
+
+    #team .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    #team .card-img-top {
+        height: 200px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+        border-radius: 10px;
+        
+    }
+
+    #team .card-title {
+        font-size: 1.25rem;
+        color: #333;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+
+    }
+
+    #team .card-text {
+        color: #777;
+        margin-bottom: 1rem;
+    }
+
+    #team .btn-primary {
+        background-color: #007bff;
+        border: none;
+        transition: background-color 0.3s ease;
+    }
+
+    #team .btn-primary:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+
+
+<section class="Services py-5 bg-light" id="service">
+    <div class="container">
+        <div class="text-center my-5">
+            <h2 class="section-title">Our <span class="text-primary">Services</span></h2>
+            <hr class="w-25 mx-auto">
+        </div>
+        <div class="row" data-aos="zoom-in-up" data-aos-offset="200">
+            <!-- Technology Blog Service Card -->
+            <div class="col-sm-12 col-md-4 col-lg-4 col-12 mb-4">
+                <div class="card service-card h-100">
+                    <div class="card-body text-center">
+                        <i class="bi bi-laptop bg-primary p-3 text-white rounded-circle mb-3"></i>
+                        <h5 class="card-title">Technology Blog</h5>
+                        <p class="card-text">Explore the latest trends and innovations in technology.</p>
+                        <a href="#" class="btn btn-outline-primary">Explore</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Student Notes Blog Service Card -->
+            <div class="col-sm-12 col-md-4 col-lg-4 col-12 mb-4">
+                <div class="card service-card h-100 bg-primary text-white">
+                    <div class="card-body text-center">
+                        <i class="bi bi-journal bg-white p-3 text-primary rounded-circle mb-3"></i>
+                        <h5 class="card-title">Student Notes Blog</h5>
+                        <p class="card-text">Access helpful study materials and resources for students.</p>
+                        <a href="#" class="btn btn-outline-light">Explore</a>
+                    </div>
+                </div>
+            </div>
+            <!-- News Blog Service Card -->
+            <div class="col-sm-12 col-md-4 col-lg-4 col-12 mb-4">
+                <div class="card service-card h-100">
+                    <div class="card-body text-center">
+                        <i class="bi bi-newspaper bg-primary p-3 text-white rounded-circle mb-3"></i>
+                        <h5 class="card-title">News Blog</h5>
+                        <p class="card-text">Stay updated with the latest news and events around the world.</p>
+                        <a href="#" class="btn btn-outline-primary">Explore</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Services Section CSS */
+    .section-title {
+        font-size: 2.5rem;
+        color: #333;
+    }
+
+    .service-card {
+        border: none;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .service-card .bi {
+        font-size: 2rem;
+    }
+
+    .service-card h5 {
+        font-size: 1.5rem;
+        margin-top: 1rem;
+    }
+
+    .service-card .btn-outline-primary {
+        border-color: #007bff;
+        color: #007bff;
+    }
+
+    .service-card .btn-outline-primary:hover {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .service-card .btn-outline-light {
+        border-color: #fff;
+        color: #fff;
+    }
+
+    .service-card .btn-outline-light:hover {
+        background-color: #fff;
+        color: #007bff;
+    }
+
+    .text-primary {
+        color: #007bff !important;
+    }
+
+    .bg-primary {
+        background-color: #007bff !important;
+    }
+
+    .text-white {
+        color: #fff !important;
+    }
+</style>
+
+<section id="latest-posts" class="py-5">
+    <style>
+        .latest-post-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .latest-post-card:hover {
+            transform: translateY(-10px);
+        }
+        .latest-post-card img {
+            transition: transform 0.3s;
+        }
+        .latest-post-card:hover img {
+            transform: scale(1.1);
+        }
+        .latest-post-card .card-body {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            transition: bottom 0.3s;
+        }
+        .latest-post-card:hover .card-body {
+            bottom: -50px;
+        }
+    </style>
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title">Latest <span class="text-primary">Posts</span></h2>
+        </div>
+        <div class="row">
+            {% for post in latest_posts %}
+            <div class="col-md-4 mb-4">
+                <div class="latest-post-card card h-100">
+                    <img src="{{ post.image.url }}" class="card-img-top" alt="Post Image">
+                    <div class="card-body">
+                        <h5 class="card-title">{{  post.post_title }}</h5>
+                        <a href="{{ post.get_absolute_url }}" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<script>
+    // Initialize AOS (Animate on Scroll)
+    AOS.init({
+        duration: 800,
+        easing: 'slide',
+        once: true
+    });
+</script>
+
+
+
+
+
+
+
+
+
+<section class="subscribe">
+    {% include "subscribe.html" %}
+
+</section>
+
+
+{% include "Footer.html" %}
+            <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+            <script>
+                AOS.init();
+              </script>
+            <script
+                src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+                integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+                crossorigin="anonymous"></script>
+            <script
+                src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+                integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+                crossorigin="anonymous"></script>
+        </body>
+    </html>

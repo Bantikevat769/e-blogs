@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        
+
+        #loader {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            z-index: 9999;
+        }
+
+        #loader div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+    
+        h1 {
+            text-align: center;
+            color: #343a40;
+        }
+    
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+    
+        li {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+    
+        li:hover {
+            transform: translateY(-5px);
+        }
+    
+        h2 {
+            color: #343a40;
+        }
+    
+        p {
+            margin: 10px 0;
+            color: #6c757d;
+        }
+    
+        a {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+    
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    
+</head>
+<body>
+    <div id="loader">
+        <div>
+            <i class="fas fa-spinner fa-spin fa-5x"></i>
+        </div>
+    </div>
+    <div class="container">
+        <h2>Available Ebooks</h2>
+        <ul class="ebook-list">
+            {% for ebook in ebooks %}
+            <li class="ebook-item">
+                <div>
+                    <h3>{{ ebook.title }}</h3>
+                    <p>Author: {{ ebook.author }}</p>
+                    <p>Price: ${{ ebook.price }}</p>
+                    <a href="{% url 'buy_ebook' ebook.id %}" class="btn-buy">Buy Now</a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+
+    <script>
+        // Hide loader and show content after 5 seconds
+        setTimeout(function(){
+            document.getElementById('loader').style.display = 'none';
+            document.body.style.overflow = 'visible'; // Show scrollbar
+        }, 5000);
+    </script>
+</body>
+</html>

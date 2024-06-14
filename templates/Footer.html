@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Linking Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Importing Google Font */
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,500,300,700);
+
+        /* Setting default font family */
+        * {
+            font-family: Open Sans;
+        }
+
+        /* Footer styling */
+        .footer-distributed {
+            background: #666;
+            box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+            box-sizing: border-box;
+            width: 100%;
+            text-align: left;
+            font: bold 16px sans-serif;
+            padding: 55px 50px;
+        }
+
+        /* Footer section layout */
+        .footer-distributed .footer-left,
+        .footer-distributed .footer-center,
+        .footer-distributed .footer-right {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        /* Footer left section */
+        .footer-distributed .footer-left {
+            width: 40%;
+        }
+
+        /* Styling for company name */
+        .footer-distributed h3 {
+            color: #ffffff;
+            font: normal 36px "Open Sans", cursive;
+            margin: 0;
+        }
+
+        /* Styling for company name span */
+        .footer-distributed h3 span {
+            color: red;
+        }
+
+        /* Footer links styling */
+        .footer-distributed .footer-links {
+            color: #ffffff;
+            margin: 20px 0 12px;
+            padding: 0;
+        }
+
+        /* Styling for footer links */
+        .footer-distributed .footer-links a {
+            display: inline-block;
+            line-height: 1.8;
+            font-weight: 400;
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+            padding: 8px;
+            margin: 0;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            background-color: transparent;
+            border-radius: 5px;
+            border: 1px solid transparent;
+        }
+
+        /* Styling for footer links on hover */
+        .footer-distributed .footer-links a:hover {
+            color: #ffc107;
+        }
+
+        /* Styling for company name */
+        .footer-distributed .footer-company-name {
+            color: #222;
+            font-size: 14px;
+            font-weight: normal;
+            margin: 0;
+        }
+
+        /* Footer center section */
+        .footer-distributed .footer-center {
+            width: 35%;
+        }
+
+        /* Styling for center section icons */
+        .footer-distributed .footer-center i {
+            background-color: #33383b;
+            color: #ffffff;
+            font-size: 25px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 42px;
+            margin: 10px 15px;
+            vertical-align: middle;
+        }
+
+        /* Styling for envelope icon */
+        .footer-distributed .footer-center i.fa-envelope {
+            font-size: 17px;
+            line-height: 38px;
+        }
+
+        /* Styling for footer center text */
+        .footer-distributed .footer-center p {
+            display: inline-block;
+            color: #ffffff;
+            font-weight: 400;
+            vertical-align: middle;
+            margin: 0;
+        }
+
+        /* Styling for footer center text span */
+        .footer-distributed .footer-center p span {
+            display: block;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 2;
+        }
+
+        /* Styling for footer center text anchor */
+        .footer-distributed .footer-center p a {
+            color: lightseagreen;
+            text-decoration: none;
+        }
+
+        /* Styling for separator in footer links */
+        .footer-distributed .footer-links a:before {
+            content: "|";
+            font-weight: 300;
+            font-size: 20px;
+            left: 0;
+            color: #fff;
+            display: inline-block;
+            padding-right: 5px;
+        }
+
+        /* Styling to remove separator for first link */
+        .footer-distributed .footer-links .link-1:before {
+            content: none;
+        }
+
+        /* Footer right section */
+        .footer-distributed .footer-right {
+            width: 20%;
+        }
+
+        /* Styling for footer company description */
+        .footer-distributed .footer-company-about {
+            line-height: 20px;
+            color: #92999f;
+            font-size: 13px;
+            font-weight: normal;
+            margin: 0;
+        }
+
+        /* Styling for footer company description span */
+        .footer-distributed .footer-company-about span {
+            display: block;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        /* Styling for footer icons */
+        .footer-distributed .footer-icons {
+            margin-top: 25px;
+        }
+
+        /* Styling for footer icon links */
+        .footer-distributed .footer-icons a {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            background-color: #fff;
+            border-radius: 2px;
+            font-size: 20px;
+            color: #ffffff;
+            text-align: center;
+            line-height: 35px;
+            margin-right: 3px;
+            margin-bottom: 5px;
+            transition: all 0.2s ease;
+        }
+
+        /* Styling for Facebook icon */
+        .footer-distributed .footer-icons .fab.fa-facebook-f {
+            color: blue;
+        }
+
+        /* Styling for Twitter icon */
+        .footer-distributed .footer-icons a .fa-twitter {
+            color: #55acee;
+        }
+
+        /* Styling for LinkedIn icon */
+        .footer-distributed .footer-icons .fab.fa-linkedin-in {
+            color: blue;
+        }
+
+        /* Styling for GitHub icon */
+        .footer-distributed .footer-icons a .fa-github {
+            color: #333;
+        }
+
+        /* Media query for smaller screens */
+        @media (max-width: 880px) {
+            .footer-distributed {
+                font: bold 14px sans-serif;
+            }
+
+            .footer-distributed .footer-left,
+            .footer-distributed .footer-center,
+            .footer-distributed .footer-right {
+                display: block;
+                width: 100%;
+                margin-bottom: 40px;
+                text-align: center;
+            }
+
+            .footer-distributed .footer-center i {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<section>
+    <!-- Footer section -->
+    <footer class="footer-distributed">
+
+        <!-- Footer left section -->
+        <div class="footer-left">
+
+            <!-- Company name -->
+            <h3>Tech<span>IT</span></h3>
+
+            <!-- Footer links -->
+            <p class="footer-links">
+                <a href="#" class="link-1">Home</a>
+                <a href="#">Blog</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+                <a href="#">Faq</a>
+            </p>
+
+            <!-- Company copyright information -->
+            <p class="footer-company-name">E-Blog Website © 2024</p>
+        </div>
+
+        <!-- Footer center section -->
+        <div class="footer-center">
+
+            <!-- Contact information -->
+            <div>
+                <i class="fa fa-map-marker"></i>
+                <p><span>Nanakheda  Dhendyal complex </span>  Ujjain</p>
+            </div>
+
+            <div>
+                <i class="fa fa-phone"></i>
+                <p>+19-7697691340</p>
+            </div>
+
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p><a href="https://itinfohubs.blogspot.com/">itinfohubs.blogspot.com</a></p>
+            </div>
+
+        </div>
+
+        <!-- Footer right section -->
+        <div class="footer-right">
+
+            <!-- Footer company description -->
+            <p class="footer-company-about">
+                <span>About the Blog website</span>
+                Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+            </p>
+
+            <!-- Footer social media icons -->
+            <div class="footer-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+
+    </footer>
+</section>
+
+</body>
+</html>

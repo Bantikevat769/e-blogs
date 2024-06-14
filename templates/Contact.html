@@ -1,0 +1,83 @@
+{% load static %}
+{% include "Header.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Form with Google Map</title>
+  <!-- Link Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .mains{
+
+      margin-top:30px;
+      margin-bottom:30px;
+      padding-top:30px;
+      padding-bottom:30px;
+      border-radius:10px;
+      border:1px solid gray;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+
+
+      
+
+    }
+  </style>
+</head>
+<body>
+  <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/664082239a809f19fb2fff23/1htlvon63';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+<br>
+<br>
+<div class="container mains">
+  <div class="row">
+    <div class="col-md-6">
+      <!-- Contact form -->
+      <form method="post" action="{% url 'contact' %}">
+        {% csrf_token %}
+        <h2 class="text-center">TechIT</h2>
+        <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Felis diam lectus sapien.</p>
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" class="form-control" id="firstName" name="first_name" placeholder="Enter your first name">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+          <label for="phoneNumber">Phone Number</label>
+          <input type="tel" class="form-control" id="phoneNumber" name="phone_number" placeholder="Enter your phone number">
+        </div>
+        <div class="form-group">
+          <label for="query">What do you have in mind?</label>
+          <textarea class="form-control" id="query" name="query" rows="5" placeholder="Enter your query"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <div class="text-center">
+        <!-- Google Map -->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3152.537413268436!2dYOUR_LONGITUDE!3dYOUR_LATITUDE!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3AYOUR_PLACE_NAME!2sYOUR_PLACE_NAME!5e0!3m2!1sen!2sus!4v1619114347306!5m2!1sen!2sus" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Link Bootstrap JS (optional) -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% include "Footer.html" %}
+</body>
+</html>

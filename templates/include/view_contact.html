@@ -1,0 +1,115 @@
+{% include 'include/header.html' %}
+{% block content %}
+<div class="content-wrapper">
+   <div class="content-header">
+      <div class="container-fluid">
+         <div class="row mb-2">
+            <div class="col-sm-6">
+               <h1 class="m-0">Contacts</h1>
+            </div>
+            <div class="col-sm-6">
+               <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item active">View Contacts</li>
+               </ol>
+            </div>
+         </div>
+      </div>
+   </div>
+   <section class="content">
+      <div class="container-fluid">
+         <div class="row">
+            <div class="col-md-12">
+
+               <div class="card card-primary">
+               <div class="card-header">
+                  <div class="row">
+                     <div class="col-md-10">
+                        <h3 class="card-title">View Contacts</h3>
+                     </div>
+                     <div class="col-md-2">
+                        <!-- Add button if needed -->
+                     </div>
+                  </div>
+               </div>
+               <div class="card-body">
+               <!-- Contacts Table -->
+               <table id="contactsTable" class="table table-bordered table-striped">
+               <thead>
+               <tr>
+               <th>#</th>
+               <th>First Name</th>
+               <th>Email</th>
+               <th>Phone Number</th>
+               <th>Query</th>
+               <th>Action</th> <!-- New column for action button -->
+               </tr>
+               </thead>
+               <tbody>
+               {% for contact in contacts %}
+               <tr>
+               <td>{{ forloop.counter }}</td>
+               <td>{{ contact.first_name }}</td>
+               <td>{{ contact.email }}</td>
+               <td>{{ contact.phone_number }}</td>
+               <td>{{ contact.query }}</td>
+               <td><button class="btn btn-danger btn-sm" onclick="deleteContact('{{ contact.id }}')">Delete</button></td> <!-- Action button to delete entry -->
+               </tr>
+               {% endfor %}
+               </tbody>
+               </table>
+               <!-- Contacts Table -->
+            </div>
+            </div>
+         </div>
+      </div>
+   </section>
+</div>
+{% include 'include/footer.html' %}
+<script>
+  $(function () {
+    $("#contactsTable").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+  });
+
+  function deleteContact(contactId) {
+    // Send an AJAX request to delete the contact
+    $.ajax({
+      url: '/delete_contact/' + contactId + '/', // Specify the URL of the delete endpoint
+      type: 'POST', // Use POST method
+      data: {
+        csrfmiddlewaretoken: '{{ csrf_token }}' // Include CSRF token in the request
+      },
+      success: function(response) {
+        console.log('Contact deleted successfully');
+        // Show success message
+        showMessage('Contact deleted successfully');
+        // Reload the page to reflect the changes
+        location.reload();
+      },
+      error: function(xhr, status, error) {
+        console.error('Error deleting contact:', error);
+      }
+    });
+  }
+
+  // Function to show success message
+  function showMessage(message) {
+    // Create an alert element
+    var alertDiv = $('<div class="alert alert-success alert-dismissible fade show" role="alert">' +
+                     message +
+                     '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+                     '<span aria-hidden="true">&times;</span>' +
+                     '</button>' +
+                     '</div>');
+    // Append the alert to the body
+    $('body').append(alertDiv);
+    // Auto dismiss the alert after 3 seconds
+    setTimeout(function() {
+      alertDiv.alert('close');
+    }, 3000);
+  }
+</script>
+{% endblock %}

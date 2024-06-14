@@ -1,0 +1,52 @@
+
+.homes{
+    border: 5px black solid;
+}
+
+.im{ 
+    width: 600px;
+    height: auto;
+    padding: 20px;
+    margin-left: 50px;
+}
+.texts{
+    
+    text-align: left;
+    padding: 10px;
+    
+}
+.h1s{
+    text-align: center;
+   
+}
+.texts1{
+    
+    text-align: left;
+    padding: 10px;
+    
+}
+.phara{
+    border: 2px solid black;
+    padding: 10px;
+    margin: 20px;
+}
+
+.format{
+    
+    margin-top: 20px;
+}
+
+.format1{
+   
+    margin-top: 40px;
+    margin-left: 0px;
+
+}
+.img1{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    margin-left: 30px;
+    text-shadow: 5px 5px 5px black;
+    display: flex;
+}

@@ -1,0 +1,735 @@
+{% include "Header.html" %}
+{% include "loder.html" %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>website page</title>
+      <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/style3.css' %}">
+      <link href="/bootstrap-5.3.2-dist/bootstrap-5.3.2-dist/css/bootstrap.min.css">
+      <link
+         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+         rel="stylesheet"
+         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+         crossorigin="anonymous">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-/a6XbtLX5Axjw1mLbwAlEwQweodlqFz7CQvQdKQepgT3fqk6d2DNzGjSyFb5/xVHz8FeoFZ0yBbKgUf3/eD+kg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <!-- Your custom CSS or other stylesheets -->
+      <link
+         href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap"
+         rel="stylesheet">
+      <link rel="stylesheet"
+         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+      <!-- animation -->
+      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+   </head>
+   <body>
+      <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/664082239a809f19fb2fff23/1htlvon63';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+      <!--End of Tawk.to Script-->
+      <br>
+      <br>
+      <br>
+      <style>
+         #social-media {
+         position: absolute;
+         right: 0;
+         margin-right: 60px; /* Adjust the right margin to create a gap */
+         }
+         .social-icon {
+         font-size: 1.5em; /* Adjust the size as needed */
+         margin-right: 10px; /* Adjust the right margin to create a gap */
+         text-align: right;
+         }
+      </style>
+      
+      <section id="social-media" class="social">
+         <!-- Facebook -->
+         <i class="fab fa-facebook-f social-icon" style="color: #3b5998;"></i>
+         <!-- Twitter -->
+         <i class="bi bi-twitter social-icon" style="color: #55acee;"></i>
+         <!-- Google -->
+         <i class="bi bi-google social-icon" style="color: #dd4b39;"></i>
+         <!-- Instagram -->
+         <i class="bi bi-instagram social-icon" style="color: #ac2bac;"></i>
+         <!-- Linkedin -->
+         <i class="bi bi-linkedin-in social-icon" style="color: #0082ca;"></i>
+         <!-- Youtube -->
+         <i class="bi bi-youtube social-icon" style="color: #ed302f;"></i>
+         <!-- Github -->
+         <i class="bi bi-github social-icon" style="color: #333333;"></i>
+         <!-- Whatsapp -->
+         <i class="bi bi-whatsapp social-icon" style="color: #25d366;"></i>
+      </section>
+      <br>
+      <br>
+      <br>
+      <section class="homes">
+        <div class="containers ms-5">
+            <div class="row">
+                <div class="col-md-8">
+                    <!-- Blog Post -->
+                    {% if blog %}
+                    <div class="blog-post">
+                        <!-- Title -->
+                        <h2 class="post-title">{{ blog.post_title }}</h2>
+                        <!-- Date -->
+                        <p class="post-date">{{ blog.publish_date|date:"M. d, Y"}}</p>
+                        <!-- Image -->
+                        <img src="{{ blog.image.url }}" alt="Blog Post Image" class="post-image">
+                        <!-- Content -->
+                        <div class="post-content">
+                            <p>{{ blog.details|striptags }}</p>
+                        </div>
+                        <!-- Author -->
+                        <div class="post-author">
+                            <p>{{ blog.author }}</p>
+                        </div>
+                    
+                        <!-- Text-to-Speech Buttons -->
+                        <div class="tts-buttons">
+                            <button class="tts-button play" onclick="speakText()">
+                                <i class="fa fa-play"></i> Listen to this post
+                            </button>
+                            <button class="tts-button pause" onclick="pauseSpeech()">
+                                <i class="fa fa-pause"></i> Pause
+                            </button>
+                            <button class="tts-button stop" onclick="stopSpeech()">
+                                <i class="fa fa-stop"></i> Stop
+                            </button>
+                        </div>
+                        <!-- Status Display -->
+                        <div class="status" id="status">Status: Idle</div>
+                    </div>
+
+
+
+
+
+
+                    <script>
+                        let isPaused = false;
+                
+                        function updateStatus(message) {
+                            document.getElementById('status').innerText = `Status: ${message}`;
+                        }
+                
+                        function speakText() {
+                            const text = "{{ blog.details|striptags|escapejs }}";
+                            const utterance = new SpeechSynthesisUtterance(text);
+                            utterance.lang = 'hi-IN';
+                
+                            utterance.onstart = () => updateStatus('Speaking');
+                            utterance.onend = () => updateStatus('Finished');
+                            utterance.onpause = () => updateStatus('Paused');
+                            utterance.onresume = () => updateStatus('Resumed');
+                
+                            window.speechSynthesis.speak(utterance);
+                            isPaused = false;
+                        }
+                
+                        function pauseSpeech() {
+                            if (isPaused) {
+                                window.speechSynthesis.resume();
+                                updateStatus('Resumed');
+                                isPaused = false;
+                            } else {
+                                window.speechSynthesis.pause();
+                                updateStatus('Paused');
+                                isPaused = true;
+                            }
+                        }
+                
+                        function stopSpeech() {
+                            window.speechSynthesis.cancel();
+                            updateStatus('Stopped');
+                            isPaused = false;
+                        }
+                    </script>
+
+
+{%endif%}
+
+
+
+
+
+
+
+                    <!-- End Blog Post -->
+                </div>
+                <div class="col-md-4">
+                    <div class="latest-posts">
+                        <h3 class="text-center">Latest Posts</h3>
+                        <div class="row">
+                            {% for post in latest_posts %}
+                            <div class="col-md-12"> <!-- Adjust column width according to design -->
+                                <div class="post-card">
+                                    <div class="image-container">
+                                        <img src="{{ post.image.url }}" alt="post-title" />
+                                    </div>
+                                    <div class="post-details">
+                                        <h2 class="post-title"><a href="/singlepost/{{ post.id }}">{{ post.post_title }}</a></h2>
+                                        <p class="post-date">{{ post.publish_date|date:"M. d, Y"}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <style>
+            .blog-post {
+                margin-bottom: 40px; /* Adjust spacing between blog post and latest posts */
+            }
+            
+            .post-title {
+                font-size: 24px;
+                font-weight: bold;
+                color: #333;
+                margin-bottom: 10px;
+            }
+            
+            .post-date {
+                font-size: 14px;
+                color: #666;
+                margin-bottom: 10px;
+            }
+            
+            .post-image {
+                width: 100%; /* Adjust width as needed */
+                height: auto; /* Maintain aspect ratio */
+                margin-bottom: 20px;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                transition: 0.3s ease;
+                cursor: pointer;
+            }
+            
+            .post-content {
+                font-size: 16px;
+                line-height: 1.6;
+                color: #444;
+                margin-bottom: 10px;
+                text-align: justify;
+                padding: 10px;
+                text-indent: 50px;
+            }
+            
+            .post-author {
+                font-size: 14px;
+                color: #888;
+                margin-top: 20px;
+            }
+            
+            .tts-buttons {
+                margin-top: 20px;
+                text-align: center;
+            }
+            
+            .tts-button {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 10px 20px;
+                margin: 5px;
+                font-size: 16px;
+                font-weight: bold;
+                color: #fff;
+                background-color: #007bff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s, transform 0.3s;
+            }
+            
+            .tts-button:hover {
+                background-color: #0056b3;
+                transform: scale(1.05);
+            }
+            
+            .tts-button:focus {
+                outline: none;
+            }
+            
+            .tts-button .fa {
+                margin-right: 10px;
+            }
+            
+            .tts-button.play {
+                background-color: #28a745;
+            }
+            
+            .tts-button.play:hover {
+                background-color: #218838;
+            }
+            
+            .tts-button.pause {
+                background-color: #ffc107;
+            }
+            
+            .tts-button.pause:hover {
+                background-color: #e0a800;
+            }
+            
+            .tts-button.stop {
+                background-color: #dc3545;
+            }
+            
+            .tts-button.stop:hover {
+                background-color: #c82333;
+            }
+            
+            .status {
+                margin-top: 10px;
+                font-size: 16px;
+                font-weight: bold;
+            }
+            
+            /* Latest Posts CSS */
+            .latest-posts {
+                margin-top: 20px;
+            }
+            
+            .latest-posts h3 {
+                font-size: 30px;
+                font-weight: bold;
+                color: #333;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+            
+            .post-card {
+                display: flex;
+                border: 1px solid #ccc;
+                margin-bottom: 20px;
+                max-width: 360px;
+                border-radius: 50px;
+            }
+            
+            .image-container {
+                width: 80px;
+                height: 80px;
+                margin-left: 5px;
+                overflow: hidden;
+            }
+            
+            .image-container img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+            
+            .post-details {
+                flex: 1;
+                padding: 20px;
+            }
+            
+            .post-title {
+                font-size: 18px; /* Adjust font size */
+                margin-top: 0;
+                margin-bottom: 5px;
+                text-align: left;
+                color: #007bff; /* Change title color */
+            }
+            
+            .post-title a {
+                text-decoration: none;
+                color: #007bff; /* Change link color */
+            }
+            
+            .post-date {
+                color: #666;
+                font-size: 14px;
+                margin-bottom: 0;
+            }
+        </style>
+    </section>
+    
+
+
+
+{% comment %} 
+      <section class="homes">
+         <div class="containers  ms-5" >
+            <div class="row">
+               <style>
+                  .post-image {
+                  width:800px;  /* Adjust the width as needed */
+                  height:400px; /* Maintain aspect ratio */
+                  margin-bottom: 20px; /* Adjust spacing between image and content */
+                  object-fit: cover;
+                  border-radius: 10px;
+                  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                  transition: 0.3s ease;
+                  cursor: pointer;
+                  padding: 5px;
+                  }
+                  /* CSS for post title */
+                  .post-title {
+                  font-size: 24px; /* Adjust font size */
+                  font-weight: bold; /* Make title bold */
+                  color: #333; /* Set text color */
+                  margin-bottom: 10px; /* Adjust spacing below title */
+                  text-decoration: none; /* Remove underline from links */
+                  cursor: pointer;
+                  }
+                  /* CSS for post date */
+                  .post-date {
+                  font-size: 14px; /* Adjust font size */
+                  color: #666; /* Set text color */
+                  margin-bottom: 10px; /* Adjust spacing below date */
+                  text-decoration: none; /* Remove underline from links */
+                  cursor: pointer;
+                  }
+                  /* CSS for post content */
+                  .post-content {
+                  font-size: 16px; /* Adjust font size */
+                  line-height: 1.6; /* Adjust line height for readability */
+                  color: #444; /* Set text color */
+                  margin-bottom: 10px; /* Adjust spacing below content */
+                  text-decoration: none; /* Remove underline from links */
+                  cursor: pointer;
+                  text-align: justify;
+                  padding: 10px;
+                  text-indent: 50px;
+                  }
+                  /* CSS for post author */
+                  .post-author {
+                  font-size: 14px; /* Adjust font size */
+                  color: #888; /* Set text color */
+                  margin-top: 20px; /* Adjust spacing above author section */
+                  }
+               </style>
+               <div class="col-md-8">
+                  <!-- Blog Post -->
+                   {% if blog %}
+                  <div class="blog-post">
+                     <!-- Title -->
+                     <h2 class="post-title">{{ blog.post_title }}</h2>
+                     <!-- Date -->
+                     <p class="post-date">{{ blog.publish_date|date:"M. d, Y"}}</p>
+                     <!-- Image -->
+                     <img src="{{ blog.image.url }}" alt="Blog Post Image" class="post-image">
+                     <!-- Content -->
+                     <div class="post-content">
+                        <p>{{ blog.details|striptags }}</p>
+                     </div>
+                     <!-- Author -->
+                     <div class="post-author">
+                        <p>{{ blog.author }}</p>
+                    
+                    
+                    
+                    
+                     <style>
+                        .tts-button {
+                            display: inline-flex;
+                            align-items: center;
+                            justify-content: center;
+                            padding: 10px 20px;
+                            margin: 5px;
+                            font-size: 16px;
+                            font-weight: bold;
+                            color: #fff;
+                            background-color: #007bff;
+                            border: none;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            transition: background-color 0.3s, transform 0.3s;
+                        }
+                
+                        .tts-button:hover {
+                            background-color: #0056b3;
+                            transform: scale(1.05);
+                        }
+                
+                        .tts-button:focus {
+                            outline: none;
+                        }
+                
+                        .tts-button .fa {
+                            margin-right: 10px;
+                        }
+                
+                        .tts-button.play {
+                            background-color: #28a745;
+                        }
+                
+                        .tts-button.play:hover {
+                            background-color: #218838;
+                        }
+                
+                        .tts-button.pause {
+                            background-color: #ffc107;
+                        }
+                
+                        .tts-button.pause:hover {
+                            background-color: #e0a800;
+                        }
+                
+                        .tts-button.stop {
+                            background-color: #dc3545;
+                        }
+                
+                        .tts-button.stop:hover {
+                            background-color: #c82333;
+                        }
+                
+                        .status {
+                            margin-top: 10px;
+                            font-size: 16px;
+                            font-weight: bold;
+                        }
+                    </style>
+                
+                    <!-- Text-to-Speech Buttons -->
+                    <button class="tts-button play" onclick="speakText()">
+                        <i class="fa fa-play"></i> Listen to this post
+                    </button>
+                    <button class="tts-button pause" onclick="pauseSpeech()">
+                        <i class="fa fa-pause"></i> Pause
+                    </button>
+                    <button class="tts-button stop" onclick="stopSpeech()">
+                        <i class="fa fa-stop"></i> Stop
+                    </button>
+                
+                    <!-- Status Display -->
+                    <div class="status" id="status">Status: Idle</div>
+                
+                    <!-- Include your other HTML content here -->
+                   
+                
+                    <!-- Scripts -->
+                    <script>
+                        let isPaused = false;
+                
+                        function updateStatus(message) {
+                            document.getElementById('status').innerText = `Status: ${message}`;
+                        }
+                
+                        function speakText() {
+                            const text = "{{ blog.details|striptags|escapejs }}";
+                            const utterance = new SpeechSynthesisUtterance(text);
+                            utterance.lang = 'hi-IN';
+                
+                            utterance.onstart = () => updateStatus('Speaking');
+                            utterance.onend = () => updateStatus('Finished');
+                            utterance.onpause = () => updateStatus('Paused');
+                            utterance.onresume = () => updateStatus('Resumed');
+                
+                            window.speechSynthesis.speak(utterance);
+                            isPaused = false;
+                        }
+                
+                        function pauseSpeech() {
+                            if (isPaused) {
+                                window.speechSynthesis.resume();
+                                updateStatus('Resumed');
+                                isPaused = false;
+                            } else {
+                                window.speechSynthesis.pause();
+                                updateStatus('Paused');
+                                isPaused = true;
+                            }
+                        }
+                
+                        function stopSpeech() {
+                            window.speechSynthesis.cancel();
+                            updateStatus('Stopped');
+                            isPaused = false;
+                        }
+                    </script>
+
+
+
+
+
+
+
+
+
+
+                     
+                     {% endif %}
+                  </div>
+                  <!-- End Blog Post -->
+               </div>
+               <style>
+                * Latest Posts CSS */
+                .latest-posts {
+                    margin-top: 20px;
+                }
+                
+                .latest-posts h3 {
+                    font-size: 30px;
+                    font-weight: bold;
+                    color: #333;
+                    margin-bottom: 20px;
+                    text-align: center;
+                }
+                
+                .post-card {
+                    display: flex;
+                    border: 1px solid #ccc;
+                    margin-bottom: 20px;
+                    max-width: 360px;
+                    border-radius: 50px;
+                }
+                
+                .image-container {
+                    width: 80px;
+                    height: 80px;
+                    margin-left: 5px;
+                    overflow: hidden;
+                }
+                
+                .image-container img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 50%;
+                }
+                
+                .post-details {
+                    flex: 1;
+                    padding: 20px;
+                }
+                
+                .post-title {
+                    font-size: 18px; /* Adjust font size */
+                    margin-top: 0;
+                    margin-bottom: 5px;
+                    text-align: left;
+                    color: #007bff; /* Change title color */
+                }
+                
+                .post-title a {
+                    text-decoration: none;
+                    color: #007bff; /* Change link color */
+                }
+                
+                .post-date {
+                    color: #666;
+                    font-size: 14px;
+                    margin-bottom: 0;
+                }
+               </style>
+               <div class="col-md-4">
+                <div class="latest-posts">
+                    <h3 class="text-center">Latest Posts</h3>
+                    <div class="row">
+                        {% for post in latest_posts %}
+                        <div class="col-md-12"> <!-- Adjust column width according to design -->
+                            <div class="post-card">
+                                <div class="image-container">
+                                    <img src="{{ post.image.url }}" alt="post-title" />
+                                </div>
+                                <div class="post-details">
+                                    <h2 class="post-title"><a href="/singlepost/{{ post.id }}">{{ post.post_title }}</a></h2>
+                                    <p class="post-date">{{ post.publish_date|date:"M. d, Y"}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            </div>
+         </div>
+         </div>
+      </section> {% endcomment %}
+      <section class="comment_form">
+         {% include "comment_form.html" %}
+      </section>
+      <!-- Google Translate Element -->
+      <div class="content">
+        <!-- Your website content goes here -->
+        <p>Welcome to our website! Here's some content...</p>
+    </div>
+    
+    <div id="google_translate_element"></div>
+    
+    <style>
+        /* Style the Google Translate element container */
+        #google_translate_element {
+            text-align: center;
+            margin-top: 20px; /* Add spacing between content and translation tool */
+        }
+    
+        /* Style the dropdown button */
+        .goog-te-combo {
+            background-color: #fff; /* White background color */
+            border: 1px solid #ced4da; /* Gray border */
+            border-radius: 4px;
+            padding: 8px 12px;
+            font-size: 14px;
+            color: #495057; /* Text color */
+            transition: border-color 0.3s ease;
+            -webkit-appearance: none; /* Remove default styles for Safari */
+            -moz-appearance: none; /* Remove default styles for Firefox */
+            appearance: none;
+        }
+    
+        /* Style the dropdown arrow icon */
+        .goog-te-combo-arrow {
+            display: none; /* Hide the default dropdown arrow */
+        }
+    
+        /* Hover effect for the dropdown button */
+        .goog-te-combo:hover {
+            border-color: #6c757d; /* Darker border color on hover */
+        }
+    </style>
+    
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+      <br>
+      {% if messages %}
+      <div class="alert alert-success" role="alert">
+         {% for message in messages %}
+         {{ message }}
+         {% endfor %}
+      </div>
+      {% endif %}
+      <br>
+      </section>
+      {% include "subscribe.html" %}
+      {% include "Footer.html" %}
+      <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+      <script>
+         AOS.init();
+      </script>
+      <script
+         src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQ+zqX6gSbd85u4mG4QzX+"
+         crossorigin="anonymous"></script>
+      <script
+         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+         crossorigin="anonymous"></script>
+   </body>
+</html>

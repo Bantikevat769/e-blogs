@@ -1,0 +1,148 @@
+{% include "Header.html" %}
+{% include "loder.html" %}
+
+<!-- Include Bootstrap CSS -->
+<link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
+<!-- Add a background image or color -->
+<style>
+    body {
+        background: linear-gradient(to bottom right, #6c63ff, #ff636c);
+        color: #fff;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .containers {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .card {
+        margin-top: 20px;
+        margin-bottom: 30px;
+        width: 100%;
+        max-width: 300px;
+        margin-left: 30px;
+        border: none;
+        border-radius: 5px;
+        overflow: hidden;
+        transition: transform 0.3s ease-in-out;
+        background-color: #212529; /* Dark background color */
+        color: #fff; /* White text color */
+    }
+
+    .card img {
+       
+        object-fit: cover; /* Maintain aspect ratio and cover the entire card */
+        width: 100%;
+        height: 150px;
+
+       
+        border-radius: 5px 5px 0 0;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease-in-out;
+        cursor: pointer;
+
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+    }
+
+    .card-date {
+        font-style: italic;
+        color: #ddd;
+    }
+
+    .card-title {
+        font-weight: bold;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .card-text {
+        font-size: 1rem;
+        color: #ddd; /* Lighter text color */
+        margin-bottom: 1rem;
+    }
+
+    .btn-primary {
+        background-color: #fff;
+        border-color: #fff;
+        color: #6c63ff;
+        font-weight: bold;
+    }
+
+    .btn-primary:hover {
+        background-color: #ddd;
+        border-color: #ddd;
+        color: #6c63ff;
+    }
+
+    @media (max-width: 768px) {
+        .col-md-4 {
+            flex: 0 0 100%;
+        }
+    }
+</style>
+
+<section class="containers cards">
+    <div class="row">
+        {% for post in blogview %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <!-- Use Bootstrap's img-fluid class to make images responsive -->
+                <img src="{{ post.image.url }}" class="card-img-top img-fluid" alt="{{ post.title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.post_title }}</h5>
+                    <p class="card-text">{{ post.details|striptags|truncatechars:50 }}</p>
+                    <p class="card-date">Posted on {{ post.publish_date|truncatechars:12 }}</p> <!-- Display date -->
+                    <a href="{% url 'singlepost' post.id %}" class="btn btn-primary">Read More...</a>
+                </div>
+                <!-- Add animation and effect using CSS -->
+                <div class="card-overlay"></div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Pagination links -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="pagination justify-content-center">
+                {% if blogview.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page=1">&laquo; First</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ blogview.previous_page_number }}">Previous</a>
+                    </li>
+                {% endif %}
+                <li class="page-item active">
+                    <span class="page-link">{{ blogview.number }}</span>
+                </li>
+                {% if blogview.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ blogview.next_page_number }}">Next</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ blogview.paginator.num_pages }}">Last &raquo;</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% include "Footer.html" %}
